@@ -3,6 +3,7 @@
 #include <string>
 #include <ctime>
 #include <algorithm>
+#include <iomanip>
 
 using namespace std;
 
@@ -16,6 +17,15 @@ void FillCostWeightOfThings(vector<int>& cost, vector<int>& weight) {
 		//setting the weight from 1 to 10
 		weight[i] = rand() % 10 + 1;
 	}
+	cout << "Cost: ";
+	for (const auto& x : cost) {
+		cout << setw(3) << x << " ";
+	}
+	cout << "\n\nWeight: ";
+	for (const auto& y : weight) {
+		cout << setw(3) << y << " ";
+	}
+	cout << "\n" << endl;
 }
 vector<pair<vector<bool>, long>> CreateFirstPopulation(const vector<int>& cost, const vector<int>& weight) {
 	vector<bool> temp_v(amount, 0);
@@ -96,7 +106,6 @@ void Evolve(vector<pair<vector<bool>, long>>& population, const vector<int>& cos
 	population.pop_back();
 }
 
-
 int main() {
 	vector<int> cost(amount);
 	vector<int> weight(amount);
@@ -107,7 +116,14 @@ int main() {
 	cin >> repetitions;
 	for (int i = 1; i <= repetitions; i++) {
 		Evolve(population, cost, weight);
-		if (i % 20 == 0) cout << "Rep #" << i << ": The best is: " << population[0].second << endl;
+		if (i % 20 == 0) {
+			cout << "Rep #" << i << ": The best is: " << population[0].second << endl;
+			cout << "Items: ";
+			for (const auto& x : population[0].first) {
+				cout << setw(3) << x << " ";
+			}
+			cout << endl;
+		}
 	}
 	
 	return 0;
