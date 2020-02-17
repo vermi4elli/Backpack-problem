@@ -1,2 +1,2 @@
-# laba-5
-Лабораторная по ТА №5, генетический алгоритм на задаче о рюкзаке.
+# Genetic algorithm
+The backpack problem solved by a genetic algorithm
